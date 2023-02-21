@@ -9,19 +9,8 @@ df = pd.read_csv('worldcup.csv')
 df = df[df['Type'] != 'Caps']
 
 #remove the entire type column
-df = df.drop('Type', axis=1)
-
+df = df.drop(columns=["Type"])
+df.index.name = 'id'
 
 #save the dataframe to a csv file
 df.to_csv('worldcup_clean.csv')
-
-
-df2 = pd.read_csv('worldcup_clean.csv')
-df2.index.name = 'id'
-
-#plot the dataframe using matplotlib
-plty = df2.plot(kind='scatter',  x='Goals', y='Caps', title='World Cup Goals to Caps Scatter Plot')
-
-plty.set_xlabel('Goals')
-plty.set_ylabel('Caps')
-plty.show()
